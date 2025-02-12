@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"  // or "node index.js" depending on your entry point
+    "start": "npm install && node server.js"
   },
   "keywords": [],
   "author": "",
