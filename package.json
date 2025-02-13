@@ -1,10 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "commonjs", 
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install && node server.js"
+   "start": "node server.cjs",
+    "dev": "nodemon server.cjs"
+    
   },
   "keywords": [],
   "author": "",
@@ -17,9 +18,11 @@
     "mongodb": "^6.13.0",
     "mongoose": "^8.10.0",
     "multer": "^1.4.5-lts.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "type": "commonjs"
   },
   "engines": {
-    "node": "16.x"
-  }
+  "node": "18.x"
+}
+
 }
