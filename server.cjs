@@ -22,10 +22,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ✅ MongoDB Connection
-const MONGO_URL = process.env.MONGO_URL || "mongodb://localhost:27017/job";
-mongoose.connect(MONGO_URL)
-    .then(() => console.log("✅ MongoDB Connected"))
-    .catch(err => console.error("❌ MongoDB Connection Error:", err));
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log("✅ MongoDB Connected Successfully"))
+.catch(err => {
+    console.error("❌ MongODB COnnection Error:", err.message);
+    process.exit(1); 
+});
+
 
 // ✅ Ensure `uploads` Directory Exists
 const uploadDir = "./uploads";
