@@ -9,18 +9,32 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "��#\u0000 \u0000B\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u00002\u0000\r\u0000 \u0000#\u0000 \u0000f\u0000u\u0000l\u0000l\u0000a\u0000p\u0000i\u0000\r\u0000 \u0000#\u0000 \u0000N\u0000e\u0000w\u0000A\u0000p\u0000i\u0000W\u0000i\u0000t\u0000h\u0000B\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u0000\r\u0000 \u0000#\u0000 \u0000N\u0000e\u0000w\u0000A\u0000p\u0000i\u0000W\u0000i\u0000t\u0000h\u0000B\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u0000\r\u0000 \u0000",
   "dependencies": {
     "backend": "file:",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.0",
+    "co": "^4.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.13.0",
-    "mongoose": "^8.10.0",
+    "mongoose": "^8.10.1",
     "multer": "^1.4.5-lts.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "uuid": "^11.0.5"
   },
   "engines": {
     "node": "18.x"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riturajrai/NewApiWithBackend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/riturajrai/NewApiWithBackend/issues"
+  },
+  "homepage": "https://github.com/riturajrai/NewApiWithBackend#readme"
 }
