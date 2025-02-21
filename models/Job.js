@@ -1,15 +1,22 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+
+// Define the Job schema
 const jobSchema = new mongoose.Schema({
-    jobTitle: String,
-    companyName: String,
-    location: String,
-    category: String,
-    salary: String,
-    description: String,
-    file: String,
-    createdAt: { type: Date, default: Date.now }
+    jobTitle: { type: String, required: true },
+    companyName: { type: String, required: true },
+    location: { type: String, required: true },
+    category: { type: String, required: true },
+    salary: { type: Number, required: true },
+    description: { type: String, required: true },
+    postedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },  // Reference to User model
+    filePath: String,
+    createdAt: { type: Date, default: Date.now },
+    // Adding an array to store job applications
+    applications: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'JobApplication'  // Reference to the JobApplication model
+    }]
 });
 
-const JobModel = mongoose.model("Job", jobSchema);
-
-module.exports = JobModel; // ✅ Make sure you're exporting it
+// Export the Job model
+module.exports = mongoose.model('Job', jobSchema);

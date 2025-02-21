@@ -1,28 +1,21 @@
-// File: models/User.js
-const { request } = require('express');
+// backend/models/User.js
 const mongoose = require('mongoose');
-
+const bcrypt = require('bcryptjs')
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'Name is required'],
-    trim: true,
-    minlength: [3, 'Name must be at least 3 characters']
-  },
-  email: {
-    type: String,
-    required: [true, 'Email is required'],
-    unique: true,
-    lowercase: true,
-    trim: true,
-    match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please fill a valid email address']
-  },
-  password: {
-    type: String,
-    required: [true, 'Password is required'],
-    minlength: [6, 'Password must be at least 6 characters']
-    // In a real-world scenario, you should hash the password before saving it
-  }
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    profileImage: { type: String, default: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' },
 }, { timestamps: true });
+
+
+
+// Hash the password before saving
+userSchema.pre('save', async function (next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 10); // Hash password
+    }
+    next();
+});
 
 module.exports = mongoose.model('User', userSchema);
