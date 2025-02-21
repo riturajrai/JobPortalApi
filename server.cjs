@@ -12,7 +12,7 @@ const get = require('./models/Get')
 const app = express();
 
 app.use(cors({
-    origin: ["http://127.0.0.1:5500", "http://localhost:3000"],  // Allow frontend origins
+    origin: ["https://jobpoartalapi.netlify.app", "http://localhost:3000"],  // Allow frontend origins
     methods: ["GET", "POST", "PUT", "DELETE"],  
     allowedHeaders: ["Content-Type", "Authorization"]  
 }));
