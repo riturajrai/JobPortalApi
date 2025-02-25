@@ -9,6 +9,7 @@ const jobSchema = new mongoose.Schema({
     salary: { type: Number, required: true },
     description: { type: String, required: true },
     postedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },  // Reference to User model
+    jobtype : {type: String, required: true},
     filePath: String,
     createdAt: { type: Date, default: Date.now },
     // Adding an array to store job applications

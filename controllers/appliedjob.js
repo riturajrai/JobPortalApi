@@ -18,7 +18,6 @@ const applyForJob = async (req, res) => {
         if (alreadyApplied) {
             return res.status(400).json({ message: "⚠️ You have already applied for this job!" });
         }
-
         // ✅ Save the new application
         const newApplication = new JobApplication({
             userId,
@@ -114,9 +113,31 @@ const getAppliedJobById = async (req, res) => {
     }
 };
 
+const Savedjob = async  (req , res) => {
+    try{
+        const {id} = req.params;
+        console.log("📩 Sending saved job data with ID:", id);
+       const job = await JobApplication.findById(id)
+
+       if(!mongoose.Types.ObjectId.isValid(id)){
+        return  res.status(200).json({ message: "✅ Data fetched successfully", jobId: id });
+       }
+       console.log("📩 Sending saved job data with ID:", id);
+
+  
+        if (!job) {
+            return res.status(404).json({ message: "❌ Job not found!" });
+        }
+        res.status(200).json({ message: "✅ Data fetched successfully", job });
+    } catch(error){
+        console.error("data has been not fateched", error )
+        res.status(403).json({message: "data has been not fateched" , error : error.message})
+    }
+}
 module.exports = {
     applyForJob,
     getAppliedJobs,
     getAppliedJobById, // ✅ Added missing export
-    deleteAppliedJob
+    deleteAppliedJob,
+    Savedjob
 };

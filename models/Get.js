@@ -4,8 +4,8 @@ const upload = require("../middleware/fileUpload"); // File upload middleware
 const Job = require("../models/Job"); // Job model
 const User = require("../user/User"); // User model (Corrected path)
 const authenticateToken = require("../middleware/authMiddleware"); 
-
-const { getAppliedJobs, getAppliedJobById, deleteAppliedJob } = require("../controllers/appliedjob"); // ✅ Ensure curly braces are used
+const  jobController = require('../controllers/jobController')
+const { getAppliedJobs, getAppliedJobById, deleteAppliedJob , Savedjob} = require("../controllers/appliedjob"); // ✅ Ensure curly braces are used
 
 // ✅ Fetch All Jobs with Optional Keyword Filter (GET)
 router.get("/jobs", async (req, res) => {
@@ -48,6 +48,9 @@ router.get("/jobs/:id", async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+router.get("/savedjob/:id",authenticateToken, Savedjob);
+
+router.get("/profile/:userId"  ,jobController.getProfile )
 
 // ✅ Fetch Applied Jobs by User ID (GET)
 router.get("/applied-jobs/:userId", authenticateToken, getAppliedJobs);

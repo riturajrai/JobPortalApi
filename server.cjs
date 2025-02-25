@@ -19,8 +19,10 @@ app.use(cors({
 
 
 // ✅ Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+// Increase payload limit
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 // ✅ MongoDB Connection
 const MONGO_URI = process.env.MONGO_URL;
@@ -30,7 +32,7 @@ if (!MONGO_URI) {
 }
 
 // Connect to MongoDB with event handling
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true ,   serverSelectionTimeoutMS: 30000  });
 
 const db = mongoose.connection;
 db.on("error", err => console.error("❌ MongoDB Connection Error:", err.message));
