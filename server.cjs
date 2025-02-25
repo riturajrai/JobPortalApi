@@ -12,15 +12,12 @@ const get = require('./models/Get')
 const app = express();
 
 app.use(cors({
-    origin: [
-        "http://localhost:5000", 
-        "https://riturajrai.github.io/JobPortal-Frontend/", 
-        "https://jobpoartalapi.netlify.app/"
-    ],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }));
+
 
 
 // ✅ Middleware
